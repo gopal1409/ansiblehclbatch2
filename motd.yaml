@@ -1,0 +1,13 @@
+---
+# yaml document begin with document seprator
+  - #this minus indicate list of item in python
+    #the target where your play will run
+    hosts: web1
+    vars:
+      motd_centos: "welcome to Centos Linux \n"
+
+    tasks:
+      - name: Configurate message of the day
+        copy:
+          content: "{{ motd_centos }}"
+          dest: /etc/motd 
