@@ -17,6 +17,11 @@
           update_cache: yes
           state: latest
         when: ansible_distribution == 'CentOS'
+      - name: install patch
+        yum:
+          name: patch
+          update_cache: yes
+          state: latest
       - name: start the apache service
         service:
           name: httpd
