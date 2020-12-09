@@ -10,12 +10,12 @@
           name: epel-release 
           update_cache: yes
           state: latest
-        when: ansible_distribution == 'CentOs'
+        when: ansible_distribution == 'CentOS'
       - name: Install an apache server
         yum:
           name: httpd
           update_cache: yes
           state: latest
-        when: ansible_distribution == 'CentOs'
+        when: ansible_distribution == 'CentOS'
         
       
