@@ -23,9 +23,9 @@
           state: restarted
         notify: Check HTTP Service 
     handlers:
-      - name: Check HTTP Service
+      - name: check http service
         uri:
-          url: http://"{{ ansible_default_ipv4.address }}"
-          status_code: [200]
+          url: http://{{ ansible_default_ipv4.address }}
+          status_code: 200
         
       
