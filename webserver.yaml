@@ -20,7 +20,8 @@
       - name: start the apache service
         service:
           name: httpd
-          state: restarted
+          state: started
+        notify: Apache Started
       - name: install firewalld
         yum:
           name: firewalld
@@ -29,7 +30,7 @@
       - name: start firewalld
         service:
           name: firewalld
-          state: restarted
+          state: started
       - name: open a route in the firewall
         firewalld:
           service: http
@@ -40,4 +41,7 @@
         service:
           name: firewalld
           state: reloaded
-      
+      - name: Apache Started
+        service:
+          name: httpd
+          state: started
