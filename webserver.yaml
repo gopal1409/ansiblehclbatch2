@@ -1,0 +1,21 @@
+---
+# yaml document begin with document seprator
+  - #this minus indicate list of item in python
+    #the target where your play will run
+    hosts: web1
+    
+    tasks:
+      - name: Install an Epel-release
+        yum:
+          name: epel-release 
+          update_cache: yes
+          state: latest
+        when: ansible_distribution == 'CentOs'
+      - name: Install an apache server
+        yum:
+          name: httpd
+          update_cache: yes
+          state: latest
+        when: ansible_distribution == 'CentOs'
+        
+      
