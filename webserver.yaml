@@ -10,22 +10,34 @@
           name: epel-release 
           update_cache: yes
           state: latest
-        when: ansible_distribution == 'CentOs'
+        when: ansible_distribution == 'CentOS'
       - name: Install an apache server
         yum:
           name: httpd
           update_cache: yes
           state: latest
-        when: ansible_distribution == 'CentOs'
+        when: ansible_distribution == 'CentOS'
       - name: start the apache service
         service:
           name: httpd
           state: restarted
-        notify: Check HTTP Service 
+      - name: install firewalld
+        yum:
+          name: firewalld
+          update_cache: yes
+          state: latest
+      - name: start firewalld
+        service:
+          name: firewalld
+          state: restarted
+      - name: open a route in the firewall
+        firewalld:
+          service: http
+          state: enabled
+        notify: Reload Firewall
     handlers:
-      - name: Check HTTP Service
-        uri:
-          url: http://"{{ ansible_default_ipv4.address }}"
-          status_code: [200]
-        
+      - name: Reload Firewall
+        service:
+          name: firewalld
+          state: reloaded
       
