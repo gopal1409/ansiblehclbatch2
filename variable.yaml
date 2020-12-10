@@ -1,0 +1,18 @@
+---
+-
+# target where you need to play the playbook
+  hosts: web1
+  vars:
+        web_pkg: httpd
+        firewall_pkg: firewalld
+        perl_pkg: perl
+        rule: httpd
+  tasks:
+        - name: Install packages
+          yum:
+              name:
+                   - "{{ web_pkg }}"
+                   - "{{ firewall_pkg }}"
+                   - "{{ perl_pkg }}"
+              state: latest
+
