@@ -15,4 +15,24 @@
                    - "{{ firewall_pkg }}"
                    - "{{ perl_pkg }}"
               state: latest
+        - name: start and enable http
+          service:
+                 name: "{{ web_pkg }}"
+                 enabled: true
+                 state: started
+        - name: start and enable firewalld
+          service:
+                name: "{{ firewall_pkg }}"
+                enabled: true
+                state: started
+        - name: create an web content
+          copy:
+               content: "Welcome to Ansible"
+               dest: /var/www/html/index.html
+        - name: open the http rule in firewalld
+          firewalld:
+                   service: "{{ rule }}"
+                   permanent: true
+                   immediate: true
+                   state: enabled
 
