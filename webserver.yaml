@@ -4,49 +4,5 @@
     #the target where your play will run
     hosts: web1
     
-    tasks:
-      - name: Install an Epel-release
-        yum:
-          name: epel-release 
-          update_cache: yes
-          state: latest
-        when: ansible_distribution == 'CentOS'
-      - name: Install an apache server
-        yum:
-          name: httpd
-          update_cache: yes
-          state: latest
-        when: ansible_distribution == 'CentOS'
-      - name: install patch
-        yum:
-          name: patch
-          update_cache: yes
-          state: latest
-      - name: start the apache service
-        service:
-          name: httpd
-          state: started
-        notify: Apache Started
-      - name: install firewalld
-        yum:
-          name: firewalld
-          update_cache: yes
-          state: latest
-      - name: start firewalld
-        service:
-          name: firewalld
-          state: started
-      - name: open a route in the firewall
-        firewalld:
-          service: http
-          state: enabled
-        notify: Reload Firewall
-    handlers:
-      - name: Reload Firewall
-        service:
-          name: firewalld
-          state: reloaded
-      - name: Apache Started
-        service:
-          name: httpd
-          state: started
+    roles:
+    - apache 
