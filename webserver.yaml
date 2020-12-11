@@ -2,8 +2,9 @@
 # yaml document begin with document seprator
   - #this minus indicate list of item in python
     #the target where your play will run
-    hosts: web1
+    hosts: windows
     
     roles:
-    - apache
-    - patch 
+#    - apache
+#    - patch 
+     - windows

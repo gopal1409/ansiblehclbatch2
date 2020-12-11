@@ -1,0 +1,4 @@
+---
+# tasks file for windows
+- include_tasks: win.yaml
+- include_tasks: powertask.yaml

@@ -1,0 +1,33 @@
+---
+ 
+# target where you need to play the playbook
+    - name: create the ansible_example directory
+      win_file:
+        path: C:\ansible_example
+        state: directory
+    - name: Copy File
+      win_copy:
+        src: /tmp/motd.yaml
+        dest: C:\ansible_example\
+    - name: create a localuser pradeep
+      win_user:
+        name: pradeep
+        password: PraD@32321_er
+        state: present
+        groups:
+          - Users
+    - name: Restric write and execution access to Pradeep
+      win_acl:
+        user: pradeep
+        path: C:\ansible_example\motd.yaml
+        type: deny
+        rights: ExecuteFile,Write
+    - name: Download the apache installed
+      win_get_url:
+        url: https://archive.apache.org/dist/httpd/binaries/win32/httpd-2.2.25-win32-x86-no_ssl.msi
+        dest: C:\ansible_example\httpd-2.2.25-win32-x86-no_ssl.msi
+    - name: Install MSI
+      win_package:
+        path: C:\ansible_example\httpd-2.2.25-win32-x86-no_ssl.msi
+        state: present
+        

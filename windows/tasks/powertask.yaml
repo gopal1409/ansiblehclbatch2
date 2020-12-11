@@ -1,0 +1,3 @@
+---
+- name: Run a Powershell Script
+  script: files/helloworld.ps1
