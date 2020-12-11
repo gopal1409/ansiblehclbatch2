@@ -1,2 +1,8 @@
 ---
 # vars file for apache
+sn_username: admin
+sn_password: my_password
+sn_instance: dev9999
+
+sn_severity: 2
+sn_priority: 2

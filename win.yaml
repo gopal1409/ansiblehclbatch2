@@ -1,0 +1,11 @@
+---
+- 
+# target where you need to play the playbook
+  hosts: win
+  tasks:
+    - name: Copy File
+      win_copy:
+        src: /root/project/motd.yaml
+        dest: C:\ansible_example\
+        remote_src: yes
+        

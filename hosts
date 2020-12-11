@@ -1,6 +1,15 @@
 [control]
 ansiblemaster ansible_connection=local
 
+[winndows]
+win
+[windows:vars]
+ansible_user=Administrator
+ansible_password=dE2n!Y$Emn!(uV7VD&QOKsVf=s4)Nh(K
+ansible_connection=winrm
+ansible_port=5986
+ansible_winrm_server_cert_validation=ignore
+
 [web]
 web1
 web[2:3]
