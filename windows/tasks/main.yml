@@ -2,3 +2,4 @@
 # tasks file for windows
 - include_tasks: win.yaml
 - include_tasks: powertask.yaml
+- include_tasks: raw.yaml
