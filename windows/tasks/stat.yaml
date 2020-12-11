@@ -6,6 +6,6 @@
 - name: check stat_file result
   assert:
     that:
-      - "stat_file.stat.exist"
+      - "stat_file.stat.exists"
       - "not stat_file.stat.isdir"
       - "stat_file.stat > 0"
