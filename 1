@@ -7,7 +7,7 @@
 - name: Decesion point to start patching
   fail:
     msg="{{ inventory_hostname }} having running application , please stop first and then attempt patching"
-  when: appr_proc_check.stdout == "process_running"
+  when: appt_proc_check.stdout == "process_running"
 - name: Current Kernel Version
   shell: uname -r
   register: curr_ker
@@ -19,8 +19,8 @@
 - debug: msg="kernel has been updated"
   when: yum_update.rc == 0
 - name: Check if reboot is required or not
-  shell: kernel_new=$(rpm -qa --last kernel | head -1 | awk '{print $1}' | sed 's/kernel-//g'); kernel_now=$(uname -r); if [[ $kernel_new != $kernel_now ]]; then echo "reboot is required"; else echo "reboot is not required"; fi
-  ignore_errors: true
+  shell: kernel_new=$(rpm -qa --last kernel | head -1 | awk '{print $1}' | sed 's/kernel-//g'); kernel_now=$(uname -r); if [[ $kernel_new != $kernel_now]]; then echo "reboot is required"; else echo "reboot is not required"; fi
+  ignore_erros: true
   register: reboot_check
 - debug: msg="{{ reboot_check.stdout }}"
 - name: Reboot the system after patching
