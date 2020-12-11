@@ -3,9 +3,12 @@
 # target where you need to play the playbook
   hosts: win
   tasks:
+    - name: create the ansible_example directory
+      win_file:
+        path: C:\ansible_example
+        state: directory
     - name: Copy File
       win_copy:
-        src: /root/project/motd.yaml
+        src: /tmp/motd.yaml
         dest: C:\ansible_example\
-        remote_src: yes
         
