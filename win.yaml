@@ -11,4 +11,17 @@
       win_copy:
         src: /tmp/motd.yaml
         dest: C:\ansible_example\
+    - name: create a localuser pradeep
+      win_user:
+        name: pradeep
+        password: PraD@32321_er
+        state: present
+        groups:
+          - Users
+    - name: Restric write and execution access to Pradeep
+      win_acl:
+        user: pradeep
+        path: C:\ansible_example\motd.yaml
+        type: deny
+        rights: ExecuteFile,Write
         
