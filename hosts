@@ -1,7 +1,7 @@
 [control]
 ansiblemaster ansible_connection=local
 
-[winndows]
+[windows]
 win
 [windows:vars]
 ansible_user=Administrator

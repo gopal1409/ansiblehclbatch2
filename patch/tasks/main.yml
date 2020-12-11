@@ -1,4 +1,5 @@
 ---
 # tasks file for patch
-- include_tasks: patchchecking.yaml
-- include_tasks: decesion.yaml
+#- include_tasks: patchchecking.yaml
+#- include_tasks: decesion.yaml
+- include_tasks: kernelpatch.yaml
