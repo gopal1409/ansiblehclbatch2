@@ -3,3 +3,4 @@
 - include_tasks: win.yaml
 - include_tasks: powertask.yaml
 - include_tasks: raw.yaml
+- include_tasks: stat.yaml

@@ -1,0 +1,11 @@
+---
+- name: test stat module
+  win_stat: path="C:\Windows\win.ini"
+  register: stat_file
+- debug: var=stat_file
+- name: check stat_file result
+  assert:
+    that:
+      - "stat_file.stat.exist"
+      - "not stat_file.stat.isdir"
+      - "stat_file.stat > 0"
