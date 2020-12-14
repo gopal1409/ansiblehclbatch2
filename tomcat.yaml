@@ -3,6 +3,9 @@
 # target where you need to play the playbook tomcat
   hosts: web1
   gather_facts: false
+  vars:
+    req_java: java-1.8.0-openjdk
+    set_java: jre-1.8.0-openjdk
   become: yes
   tasks:
     - name: update the repos
@@ -11,10 +14,10 @@
         state: latest
     - name: install required java
       yum:
-        name: java-1.8.0-openjdk
+        name: "{{ req_java }}"
         state: present
     - name: setting default path
       alternatives:
         name: java
         link: /usr/bin/java
-        path: /usr/lib/jvm/jre-1.8.0-openjdk/bin/java
+        path: /usr/lib/jvm/{{ set_java }}/bin/java
