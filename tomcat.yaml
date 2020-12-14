@@ -23,5 +23,14 @@
         name: java
         link: /usr/bin/java
         path: /usr/lib/jvm/{{ set_java }}/bin/java
-    - name: display required tomcat
-      debug: var=tomcat_url
+    - name: Download required tomcat
+      get_url:
+        url: "{{ tomcat_url }}"
+        dest: /usr/local
+    - name: Extract downloaded tomcat
+      unarchive:
+        src: "/usr/local/apache-tomcat-{{ req_tomcat_ver }}.tar.gz"
+        dest: /usr/local
+        remote_src: yes
+    - name: Rename the tomcat home
+      command: mv /usr/local/apache-tomcat-{{ req_tomcat_ver }} /usr/local/latest
