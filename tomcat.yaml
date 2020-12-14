@@ -1,0 +1,15 @@
+---
+- 
+# target where you need to play the playbook tomcat
+  hosts: web1
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: update the repos
+      yum:
+        name: "*"
+        state: latest
+    - name: install required java
+      yum:
+        name: java-1.8.0-openjdk
+        state: present
