@@ -33,6 +33,10 @@
         dest: /usr/local
         remote_src: yes
     - name: Rename the tomcat home
-      command: mv /usr/local/apache-tomcat-{{ req_tomcat_var }} /usr/local/latest
+      command: mv /usr/local/apache-tomcat-{{req_tomcat_var}} /usr/local/latest
+    - name: replace server.xml
+      template:
+        src: server.xml.j2
+        dest: /usr/local/latest/conf/server.xml
     - name: starting tomcat
-      shell: /usr/local/latest/bin/startup.sh
+      shell: nohup /usr/local/latest/bin/startup.sh &
