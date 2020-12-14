@@ -13,3 +13,8 @@
       yum:
         name: java-1.8.0-openjdk
         state: present
+   - name: setting default path
+     alternatives:
+       name: java
+       link: /usr/bin/java
+       path: /usr/lib/jvm/set_java/bin/java
