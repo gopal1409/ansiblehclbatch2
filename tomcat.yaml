@@ -29,8 +29,10 @@
         dest: /usr/local
     - name: Extract downloaded tomcat
       unarchive:
-        src: "/usr/local/apache-tomcat-{{ req_tomcat_ver }}.tar.gz"
+        src: "/usr/local/apache-tomcat-{{ req_tomcat_var }}.tar.gz"
         dest: /usr/local
         remote_src: yes
     - name: Rename the tomcat home
-      command: mv /usr/local/apache-tomcat-{{ req_tomcat_ver }} /usr/local/latest
+      command: mv /usr/local/apache-tomcat-{{ req_tomcat_var }} /usr/local/latest
+    - name: starting tomcat
+      shell: /usr/local/latest/bin/startup.sh
