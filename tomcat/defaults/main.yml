@@ -1,0 +1,8 @@
+---
+# defaults file for tomcat
+    req_java: java-1.8.0-openjdk
+    set_java: jre-1.8.0-openjdk
+    req_tomcat_var: 8.5.61
+    tomcat_url: https://downloads.apache.org/tomcat/tomcat-{{ req_tomcat_var.split('.')[0] }}/v{{ req_tomcat_var }}/bin/apache-tomcat-{{ req_tomcat_var-}}.tar.gz
+    tomcat_port: 8090
+
