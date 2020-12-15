@@ -5,7 +5,7 @@
     tasks:
       - name: provision os in aws
         ec2:
-          key_name: ansible 
+          key_name: ansiblegopalbathc2 
           instance_type: t2.micro
           image: ami-09558250a3419e7d0
           count: 1
@@ -18,5 +18,5 @@
           aws_access_key: "{{ mykey }}"
           aws_secret_key: "{{ mysecret }}"
         register: ec2
-     - debug:
-         var: ec2.instances[0].public_ip
+      - debug:
+          var: ec2.instances[0].public_ip
