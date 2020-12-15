@@ -17,3 +17,6 @@
           group_id: sg-000b9723e334f9caa
           aws_access_key: "{{ mykey }}"
           aws_secret_key: "{{ mysecret }}"
+        register: ec2
+     - debug:
+         var: ec2.instances[0].public_ip
