@@ -15,6 +15,7 @@
           aws_secret_key: "{{ mysecret }}"
 
         tags:
+          - patch
           - start 
           - never 
       - name: stop the vm
@@ -27,7 +28,7 @@
           aws_secret_key: "{{ mysecret }}"
 
         tags:
-          - stop 
+          - xyz 
           - never     
       - name: start the vm
         ec2:
