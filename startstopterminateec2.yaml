@@ -1,0 +1,32 @@
+---
+  - hosts: localhost
+    vars_files:
+      - secret.yaml
+    tasks:
+      - name: start the vm
+        ec2:
+          instance_ids: i-0e27b17fd16cc3e31
+          region: us-east-2
+          state: running
+          wait: yes
+        tags:
+          - start 
+          - never 
+      - name: stop the vm
+        ec2:
+          instance_ids: i-0e27b17fd16cc3e31
+          region: us-east-2
+          state: stopped
+          wait: yes
+        tags:
+          - stop 
+          - never     
+      - name: start the vm
+        ec2:
+          instance_ids: i-0e27b17fd16cc3e31
+          region: us-east-2
+          state: absent
+          wait: yes
+        tags:
+          - terminate 
+          - never 
