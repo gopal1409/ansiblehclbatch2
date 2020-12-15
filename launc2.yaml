@@ -1,0 +1,19 @@
+---
+  - hosts: localhost
+    vars_files:
+      - secret.yaml
+    tasks:
+      - name: provision os in aws
+        ec2:
+          key_name: ansible 
+          instance_type: t2.micro
+          image: ami-09558250a3419e7d0
+          count: 1
+          wait: yes
+          vpc_subnet_id: subnet-a42e8acf
+          region: us-east-2
+          state: present
+          assign_public_ip: yes
+          group_id: sg-000b9723e334f9caa
+          aws_access_key: "{{ mykey }}"
+          aws_secret_key: "{{ mysecret }}"
