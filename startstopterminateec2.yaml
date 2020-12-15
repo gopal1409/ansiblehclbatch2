@@ -2,31 +2,42 @@
   - hosts: localhost
     vars_files:
       - secret.yaml
+    vars:
+      instance: i-0e27b17fd16cc3e31
     tasks:
       - name: start the vm
         ec2:
-          instance_ids: i-0e27b17fd16cc3e31
+          instance_ids: "{{ instance }}"
           region: us-east-2
           state: running
           wait: yes
+          aws_access_key: "{{ mykey }}"
+          aws_secret_key: "{{ mysecret }}"
+
         tags:
           - start 
           - never 
       - name: stop the vm
         ec2:
-          instance_ids: i-0e27b17fd16cc3e31
+          instance_ids: "{{ instance }}"
           region: us-east-2
           state: stopped
           wait: yes
+          aws_access_key: "{{ mykey }}"
+          aws_secret_key: "{{ mysecret }}"
+
         tags:
           - stop 
           - never     
       - name: start the vm
         ec2:
-          instance_ids: i-0e27b17fd16cc3e31
+          instance_ids: "{{ instance }}"
           region: us-east-2
           state: absent
           wait: yes
+          aws_access_key: "{{ mykey }}"
+          aws_secret_key: "{{ mysecret }}"
+
         tags:
           - terminate 
           - never 
