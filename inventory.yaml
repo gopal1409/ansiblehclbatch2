@@ -1,0 +1,14 @@
+---
+  - hosts: localhost
+    tasks:
+    - name: fetch localhost info
+      ec2_instance_facts:
+          region: us-east-2
+        aws_access_key: AKIAVS5LHH6SD7XQNDGV
+        aws_secret_key: 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
+      register: out
+    - name: Display the info of ec2 instance
+      template:
+          src: generate_csv.j2
+          dest: ec2_instance_info.csv  
+        
